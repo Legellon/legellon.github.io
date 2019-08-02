@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <meta charset="UTF-8">
-      <title>Резюме</title>
-      <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+<head>
+  <title>A Vue.js Calculator</title>
+  <style>
+    p, input { font-family: monospace; }
+    p { white-space: pre; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <p>x <input v-model="x"></p>
+    <p>y <input v-model="y"></p>
+    <p>---------------------</p>
+    <p>= <span v-text="result"></span></p>
+  </div>
 
-      <div id="header">
-          <h1>Никита Рехемяе</h1>
-          <h3>орпоопп</h3>
-          <p><a href="mailto:legelllon@gmail.com">legelllon@gmail.com</a>, <a href="https://vk.com/ca9fedb7ca9f">ВКонтакте</a></p>
-      </div> 
-
-      <div id="main">
-          <p>cvbdfggggggggggggggdfgdffdgffdfdgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggf</p> 
-          <h2>Опыт работы</h2>
-          <p>dfdsffsfssdfdsfsfsdfdsfsffsdfdsfsdsfsdfsdfsdfsdfsdfdfsdf</p>
-          <ol>
-              <p>sadasdasdasdas</p>
-              <p>sadsadadadadsd</p>
-              <p>asdddasdasdasd</p>
-          </ol>
-          <h2>Образование</h2>
-          <p>dfdsffsfssdfdsfsfsdfdsfsffsdfdsfsdsfsdfsdfsdfsdfsdfdfsdf</p>
-          <ol>
-              <p>sadasdasdasdas</p>
-              <p>sadsadadadadsd</p>
-              <p>asdddasdasdasd</p>
-          </ol>
-          <h2>Другие навыки и увлечения</h2>
-          <p>dfdsffsfssdfdsfsfsdfdsfsffsdfdsfsdsfsdfsdfsdfsdfsdfdfsdf</p>
-          <ol>
-              <p>sadasdasdasdas</p>
-              <p>sadsadadadadsd</p>
-              <p>asdddasdasdasd</p>
-          </ol>
-      </div> 
-
-      <div id="footer">
-          <h3>Никита Рехемяе</h3>
-          <p>fsdfsdfsdf, sdfsdfdfsdff, dfsdfdsf +37253636128, <a href="mailto:legelllon@gmail.com">legelllon@gmail.com</a></p>
-      </div>
-       
-  </body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script type="text/javascript">
+  function isNotNumericValue(value) {
+    return isNaN(value) || !isFinite(value);
+  }
+    var calc = new Vue({
+      el: '#app',
+      data: { x: 0, y: 0, lastResult: 0 },
+      computed: {
+        result: function() {
+          let x = parseFloat(this.x);
+          if(isNotNumericValue(x))
+          return this.lastResult;
+          let y = parseFloat(this.y);
+          if(isNotNumericValue(y))
+          return this.lastResult;
+          this.lastResult = x + y;
+          return this.lastResult;
+        }
+      }
+    });
+  </script>
+</body>
 </html>
