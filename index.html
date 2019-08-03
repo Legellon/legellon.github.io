@@ -31,6 +31,7 @@
         <p class="price">
           {{product.price | formatPrice}}
         </p>
+        <button class="default" v-on:click="addToCart"> Add to cart </button>
       </div>
     </div>
 
@@ -52,7 +53,12 @@
         price: 2000,
         image: "assets/images/product-fullsize.png",
       },
+      cart: []
     },
+    methods: {
+        addToCart: function() {
+          this.cart.push( this.product.id );
+        },
     filters: {
       formatPrice(price) {	//#B
         if (!parseInt(price)) { return ""; }	//#C
@@ -90,7 +96,10 @@
         console.log(" mounted"); 	//#E
       } 	//#E
     },	//#E
-    beforeUpdate: function () { 	//#F
+    beforeUpdate: function () { 	//#F      methods: {
+        addToCart: function() {
+          this.cart.push( this.product.id );
+        }
       if (APP_LOG_LIFECYCLE_EVENTS) { 	//#F
         console.log("beforeUpdate"); 	//#F
       } 	//#F
