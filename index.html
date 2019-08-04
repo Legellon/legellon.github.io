@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -16,6 +15,10 @@
       <div class="navbar-header">
         <h1 v-text="sitename"></h1>
       </div>
+      <div class="nav navbar-nav navbar-right cart">
+        <span
+        class="glyphicon glyphicon-shopping-cart">
+      {{ cartItemCount }}</span>
     </div>
   </header>
   <main>
@@ -54,6 +57,11 @@
         image: "assets/images/product-fullsize.png",
       },
       cart: []
+    },
+    computed: {
+      cartItemCount: function() {
+        return this.cart.length || '';
+      }
     },
     methods: {
       addToCart: function() {
