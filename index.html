@@ -37,7 +37,7 @@
             {{product.price | formatPrice}}
           </p>
           <button class="default" v-on:click="addToCart" v-if="canAddToCart"> Add on cart </button>
-          <button disabled="true" v-else> Add on cart </button>
+          <button disabled="disabled" v-else> Add on cart </button>
         </div>
       </div>
       <div v-else>
